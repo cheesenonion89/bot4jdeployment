@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
-@TestFor(UploadTrainingDataService)
-class UploadTrainingDataServiceSpec extends Specification {
+@TestFor(TrainingDataService)
+class TrainingDataServiceSpec extends Specification {
 
     def setup() {
     }

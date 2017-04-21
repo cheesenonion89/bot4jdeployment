@@ -11,7 +11,7 @@ class BotController {
                              sendTrainingData: "POST",
                              delete: "DELETE"]
 
-    def uploadTrainingDataService
+    def trainingDataService
 
     /* ADDITIONAL OPERATIONS */
     def uploadTrainingData(Bot bot){
@@ -22,7 +22,7 @@ class BotController {
 
     def sendTrainingData(TrainingDataCommand cmd){
         println("SENDING TRAINING DATA")
-        def bot = uploadTrainingDataService.uploadTrainingData(cmd)
+        def bot = trainingDataService.postTrainingData(cmd)
         redirect bot
     }
 
@@ -103,6 +103,8 @@ class BotController {
             notFound()
             return
         }
+
+        bot = trainingDataService.deleteTrainingData(bot)
 
         bot.delete flush:true
 

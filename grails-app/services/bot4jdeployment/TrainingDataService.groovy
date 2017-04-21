@@ -9,13 +9,13 @@ import retrofit2.Call
 import retrofit2.Response
 
 @Transactional
-class UploadTrainingDataService {
+class TrainingDataService {
 
 
     private final fileApi = ApiServiceGenerator.createService(FileApi.class)
 
 
-    Bot uploadTrainingData(TrainingDataCommand cmd) {
+    Bot postTrainingData(TrainingDataCommand cmd) {
         println("UPLOAD SERVICE")
         println("SIZE:" + cmd.trainingDataFile.getSize())
         println("CONTENT TYPE: " + cmd.trainingDataFile.getContentType())
@@ -52,9 +52,17 @@ class UploadTrainingDataService {
         Bot.get(cmd.id)
     }
 
+    Bot deleteTrainingData(Bot bot){
+        Call<String> call = fileApi.deleteTrainingData(bot.id.toString())
+        Response<String> response = call.execute()
+        println(response.body())
+        return bot
+    }
+
     private File multiPartFileToFile(MultipartFile multipartFile) {
         File file = File.createTempFile(multipartFile.getOriginalFilename(), '.tmp')
         multipartFile.transferTo(file)
         file
     }
 }
+
