@@ -54,7 +54,7 @@ class TelegramSpecControllerSpec extends Specification {
             controller.save(telegramSpec)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/telegramSpec/show/1'
+            response.redirectedUrl == '/telegramSpecPayload/show/1'
             controller.flash.message != null
             TelegramSpec.count() == 1
     }
@@ -98,7 +98,7 @@ class TelegramSpecControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/telegramSpec/index'
+            response.redirectedUrl == '/telegramSpecPayload/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
@@ -119,7 +119,7 @@ class TelegramSpecControllerSpec extends Specification {
 
         then:"A redirect is issued to the show action"
             telegramSpec != null
-            response.redirectedUrl == "/telegramSpec/show/$telegramSpec.id"
+            response.redirectedUrl == "/telegramSpecPayload/show/$telegramSpec.id"
             flash.message != null
     }
 
@@ -130,7 +130,7 @@ class TelegramSpecControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/telegramSpec/index'
+            response.redirectedUrl == '/telegramSpecPayload/index'
             flash.message != null
 
         when:"A domain instance is created"
@@ -146,7 +146,7 @@ class TelegramSpecControllerSpec extends Specification {
 
         then:"The instance is deleted"
             TelegramSpec.count() == 0
-            response.redirectedUrl == '/telegramSpec/index'
+            response.redirectedUrl == '/telegramSpecPayload/index'
             flash.message != null
     }
 }

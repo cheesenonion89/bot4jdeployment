@@ -3,9 +3,9 @@ package bot4jdeployment
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(BotController)
-@Mock(Bot)
-class BotControllerSpec extends Specification {
+@TestFor(FacebookSpecController)
+@Mock(FacebookSpec)
+class FacebookSpecControllerSpecPayload extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class BotControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.botList
-            model.botCount == 0
+            !model.facebookSpecList
+            model.facebookSpecCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class BotControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.bot!= null
+            model.facebookSpec!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class BotControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def bot = new Bot()
-            bot.validate()
-            controller.save(bot)
+            def facebookSpec = new FacebookSpec()
+            facebookSpec.validate()
+            controller.save(facebookSpec)
 
         then:"The create view is rendered again with the correct model"
-            model.bot!= null
+            model.facebookSpec!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            bot = new Bot(params)
+            facebookSpec = new FacebookSpec(params)
 
-            controller.save(bot)
+            controller.save(facebookSpec)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/bot/show/1'
+            response.redirectedUrl == '/facebookSpec/show/1'
             controller.flash.message != null
-            Bot.count() == 1
+            FacebookSpec.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class BotControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def bot = new Bot(params)
-            controller.show(bot)
+            def facebookSpec = new FacebookSpec(params)
+            controller.show(facebookSpec)
 
         then:"A model is populated containing the domain instance"
-            model.bot == bot
+            model.facebookSpec == facebookSpec
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class BotControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def bot = new Bot(params)
-            controller.edit(bot)
+            def facebookSpec = new FacebookSpec(params)
+            controller.edit(facebookSpec)
 
         then:"A model is populated containing the domain instance"
-            model.bot == bot
+            model.facebookSpec == facebookSpec
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class BotControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/bot/index'
+            response.redirectedUrl == '/facebookSpec/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def bot = new Bot()
-            bot.validate()
-            controller.update(bot)
+            def facebookSpec = new FacebookSpec()
+            facebookSpec.validate()
+            controller.update(facebookSpec)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.bot == bot
+            model.facebookSpec == facebookSpec
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            bot = new Bot(params).save(flush: true)
-            controller.update(bot)
+            facebookSpec = new FacebookSpec(params).save(flush: true)
+            controller.update(facebookSpec)
 
         then:"A redirect is issued to the show action"
-            bot != null
-            response.redirectedUrl == "/bot/show/$bot.id"
+            facebookSpec != null
+            response.redirectedUrl == "/facebookSpec/show/$facebookSpec.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class BotControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/bot/index'
+            response.redirectedUrl == '/facebookSpec/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def bot = new Bot(params).save(flush: true)
+            def facebookSpec = new FacebookSpec(params).save(flush: true)
 
         then:"It exists"
-            Bot.count() == 1
+            FacebookSpec.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(bot)
+            controller.delete(facebookSpec)
 
         then:"The instance is deleted"
-            Bot.count() == 0
-            response.redirectedUrl == '/bot/index'
+            FacebookSpec.count() == 0
+            response.redirectedUrl == '/facebookSpec/index'
             flash.message != null
     }
 }

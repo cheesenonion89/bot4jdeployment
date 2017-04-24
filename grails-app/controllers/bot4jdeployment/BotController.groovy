@@ -12,6 +12,14 @@ class BotController {
                              delete: "DELETE"]
 
     def trainingDataService
+    def botDeploymentService
+
+    /* MANAGE BOT DEPLOYMENT */
+
+    def deployBot(Bot bot){
+        botDeploymentService.deployBot(bot)
+        redirect bot
+    }
 
     /* MANAGE PLATFORM CONFIGURATIONS */
     def addFacebookSpec(Bot bot){
@@ -84,7 +92,7 @@ class BotController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'bot.label', default: 'Bot'), bot.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), bot.id])
                 redirect bot
             }
             '*' { respond bot, [status: CREATED] }
@@ -113,7 +121,7 @@ class BotController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'bot.label', default: 'Bot'), bot.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), bot.id])
                 redirect bot
             }
             '*'{ respond bot, [status: OK] }
@@ -135,7 +143,7 @@ class BotController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'bot.label', default: 'Bot'), bot.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), bot.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -145,7 +153,7 @@ class BotController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'bot.label', default: 'Bot'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

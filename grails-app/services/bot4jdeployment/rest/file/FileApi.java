@@ -1,5 +1,6 @@
-package bot4jdeployment;
+package bot4jdeployment.rest.file;
 
+import bot4jdeployment.rest.file.model.TrainingDataSendPayload;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;

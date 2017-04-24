@@ -32,7 +32,7 @@
                         </li>
                         <li>
                             <g:link class="create" action="create" role="button">
-                                <g:message code="default.new.label" args="['Bot']"/>
+                                <g:message code="default.new.label" args="['BotSendPayload']"/>
                             </g:link>
                         </li>
                     </ul>

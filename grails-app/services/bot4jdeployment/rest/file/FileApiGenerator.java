@@ -1,4 +1,4 @@
-package bot4jdeployment;
+package bot4jdeployment.rest.file;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

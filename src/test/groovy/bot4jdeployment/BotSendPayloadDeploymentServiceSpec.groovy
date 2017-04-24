@@ -7,7 +7,7 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(BotDeploymentService)
-class BotDeploymentServiceSpec extends Specification {
+class BotSendPayloadDeploymentServiceSpec extends Specification {
 
     def setup() {
     }

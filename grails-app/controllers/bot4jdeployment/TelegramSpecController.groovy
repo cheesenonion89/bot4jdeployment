@@ -66,7 +66,7 @@ class TelegramSpecController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'telegramSpec.label', default: 'TelegramSpec'), telegramSpec.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'telegramSpecPayload.label', default: 'TelegramSpecPayload'), telegramSpec.id])
                 redirect telegramSpec
             }
             '*'{ respond telegramSpec, [status: OK] }
@@ -86,7 +86,7 @@ class TelegramSpecController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'telegramSpec.label', default: 'TelegramSpec'), telegramSpec.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'telegramSpecPayload.label', default: 'TelegramSpecPayload'), telegramSpec.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -96,7 +96,7 @@ class TelegramSpecController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'telegramSpec.label', default: 'TelegramSpec'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'telegramSpecPayload.label', default: 'TelegramSpecPayload'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

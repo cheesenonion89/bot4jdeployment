@@ -66,7 +66,7 @@ class SlackSpecController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'slackSpec.label', default: 'SlackSpec'), slackSpec.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'slackSpecPayload.label', default: 'SlackSpecPayload'), slackSpec.id])
                 redirect slackSpec
             }
             '*'{ respond slackSpec, [status: OK] }
@@ -86,7 +86,7 @@ class SlackSpecController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'slackSpec.label', default: 'SlackSpec'), slackSpec.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'slackSpecPayload.label', default: 'SlackSpecPayload'), slackSpec.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -96,7 +96,7 @@ class SlackSpecController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'slackSpec.label', default: 'SlackSpec'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'slackSpecPayload.label', default: 'SlackSpecPayload'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

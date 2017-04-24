@@ -68,7 +68,7 @@ class FacebookSpecController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'facebookSpec.label', default: 'FacebookSpec'), facebookSpec.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'facebookSpec.label', default: 'FacebookSpecPayload'), facebookSpec.id])
                 redirect facebookSpec
             }
             '*'{ respond facebookSpec, [status: OK] }
@@ -88,7 +88,7 @@ class FacebookSpecController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'facebookSpec.label', default: 'FacebookSpec'), facebookSpec.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'facebookSpec.label', default: 'FacebookSpecPayload'), facebookSpec.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +98,7 @@ class FacebookSpecController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'facebookSpec.label', default: 'FacebookSpec'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'facebookSpec.label', default: 'FacebookSpecPayload'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

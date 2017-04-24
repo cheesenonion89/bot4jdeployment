@@ -1,5 +1,6 @@
 package bot4jdeployment
 
+import bot4jdeployment.rest.file.FileApi
 import grails.transaction.Transactional
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -12,7 +13,7 @@ import retrofit2.Response
 class TrainingDataService {
 
 
-    private final fileApi = FileApiGenerator.createService(FileApi.class)
+    private final fileApi = bot4jdeployment.rest.file.FileApiGenerator.createService(FileApi.class)
 
 
     Bot postTrainingData(TrainingDataCommand cmd) {
@@ -20,11 +21,6 @@ class TrainingDataService {
         println("SIZE:" + cmd.trainingDataFile.getSize())
         println("CONTENT TYPE: " + cmd.trainingDataFile.getContentType())
 
-        /*
-        TrainingDataSendPayload trainingDataSendPayload = new TrainingDataSendPayload(cmd.id, "This is a message")
-        Call<String> call = fileApi.putTrainingDataDummy(trainingDataSendPayload)
-        Response<String> response = call.execute()
-        */
 
         File file = multiPartFileToFile(cmd.trainingDataFile)
         print("TEMPORARY FILE LENGHT")
@@ -52,7 +48,7 @@ class TrainingDataService {
         Bot.get(cmd.id)
     }
 
-    Bot deleteTrainingData(Bot bot){
+    Bot deleteTrainingData(Bot bot) {
         Call<String> call = fileApi.deleteTrainingData(bot.id.toString())
         Response<String> response = call.execute()
         println(response.body())
