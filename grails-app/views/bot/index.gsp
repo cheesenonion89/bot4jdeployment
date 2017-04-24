@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="bot4jdeployment"/>
-    <g:set var="entityName" value="${message(code: 'bot.label', default: 'BotSendPayload')}"/>
+    <g:set var="entityName" value="${message(code: 'bot.label', default: 'Bot')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
 
@@ -38,22 +38,22 @@
             </td>
             <td>${it.deploymentDestination}</td>
             <g:if test="${it.facebookSpec}">
-                <td>${it.facebookSpec}</td>
+                <td><span class="glyphicon glyphicon-ok" style="color:green;" aria-hidden="true"></span></td>
             </g:if>
             <g:else>
-                <td>None</td>
+                <td><span class="glyphicon glyphicon-remove" style="color:red;" aria-hidden="true"></span></td>
             </g:else>
             <g:if test="${it.slackSpec}">
-                <td>${it.slackSpec}</td>
+                <td><span class="glyphicon glyphicon-ok" style="color:green;" aria-hidden="true"></span></td>
             </g:if>
             <g:else>
-                <td>None</td>
+                <td><span class="glyphicon glyphicon-remove" style="color:red;" aria-hidden="true"></span></td>
             </g:else>
             <g:if test="${it.telegramSpec}">
-                <td>${it.telegramSpec}</td>
+                <td><span class="glyphicon glyphicon-ok" style="color:green;" aria-hidden="true"></span></td>
             </g:if>
             <g:else>
-                <td>None</td>
+                <td><span class="glyphicon glyphicon-remove" style="color:red;" aria-hidden="true"></span></td>
             </g:else>
         </g:each>
         </tbody>

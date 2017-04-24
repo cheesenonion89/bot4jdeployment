@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="bot4jdeployment" />
-        <g:set var="entityName" value="${message(code: 'bot.label', default: 'BotSendPayload')}" />
+        <g:set var="entityName" value="${message(code: 'bot.label', default: 'Bot')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
