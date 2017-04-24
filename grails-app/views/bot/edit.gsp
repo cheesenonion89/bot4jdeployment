@@ -40,10 +40,52 @@
                        value="${this.bot.deploymentDestination}">
             </div>
         </div>
-        <!--
-        <fieldset class="form">
-        <f:all bean="bot"/>
-        </fieldset>-->
+
+        <div class="form-group row">
+            <label for="facebookSpec" class="col-sm-3 col-form-label">Facebook Configuration</label>
+
+            <div id="facebookSpec" class="col-sm-9">
+                <g:if test="${this.bot.facebookSpec}">
+                    <g:link class="showFacebookSpec btn btn-info" action="showFacebookSpec"
+                            resource="${this.bot}">Show Facebook Configuration</g:link>
+                </g:if>
+                <g:else>
+                    <g:link class="addFacebookSpec btn btn-info" action="addFacebookSpec"
+                            resource="${this.bot}">Add Facebook Configuration</g:link>
+                </g:else>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="slackSpec" class="col-sm-3 col-form-label">Slack Configuration</label>
+
+            <div id="slackSpec" class="col-sm-9">
+                <g:if test="${this.bot.slackSpec}">
+                    <g:link class="showSlackSpec btn btn-info" action="showSlackSpec"
+                            resource="${this.bot}">Show Slack Configuration</g:link>
+                </g:if>
+                <g:else>
+                    <g:link class="addSlackSpec btn btn-info" action="addSlackSpec"
+                            resource="${this.bot}">Add Slack Configuration</g:link>
+                </g:else>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="telegramSpec" class="col-sm-3 col-form-label">Telegram Configuration</label>
+
+            <div id="telegramSpec" class="col-sm-9">
+                <g:if test="${this.bot.telegramSpec}">
+                    <g:link class="showTelegramSpec btn btn-info" action="showTelegramSpec"
+                            resource="${this.bot}">Show Telegram Configuration</g:link>
+                </g:if>
+                <g:else>
+                    <g:link class="addTelegramSpec btn btn-info" action="addTelegramSpec"
+                            resource="${this.bot}">Add Telegram Configuration</g:link>
+                </g:else>
+            </div>
+        </div>
+
 
         <div class="row"><br/></div>
 

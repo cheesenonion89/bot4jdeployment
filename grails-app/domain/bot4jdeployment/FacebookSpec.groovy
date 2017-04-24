@@ -1,9 +1,15 @@
 package bot4jdeployment
 
-class FacebookSpec extends PlatformSpec {
+class FacebookSpec {
 
-    private String platformName = 'Facebook'
+    String platformName = 'Facebook'
+
+    String accessToken
+
+    static belongsTo = [bot: Bot]
+
 
     static constraints = {
+        platformName editable: false
     }
 }

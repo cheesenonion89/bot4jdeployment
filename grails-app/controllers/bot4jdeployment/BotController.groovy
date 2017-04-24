@@ -13,7 +13,32 @@ class BotController {
 
     def trainingDataService
 
-    /* ADDITIONAL OPERATIONS */
+    /* MANAGE PLATFORM CONFIGURATIONS */
+    def addFacebookSpec(Bot bot){
+        redirect controller: "facebookSpec", action: "create", params: [botId:bot.getId()]
+    }
+
+    def showFacebookSpec(Bot bot){
+        redirect controller: "facebookSpec", action: "show", params: [id:bot.getFacebookSpec().getId()]
+    }
+
+    def addSlackSpec(Bot bot){
+        redirect controller: "slackSpec", action: "create", params: [botId:bot.getId()]
+    }
+
+    def showSlackSpec(Bot bot){
+        redirect controller: "slackSpec", action: "show", params: [id:bot.getSlackSpec().getId()]
+    }
+
+    def addTelegramSpec(Bot bot){
+        redirect controller: "telegramSpec", action: "create", params: [botId:bot.getId()]
+    }
+
+    def showTelegramSpec(Bot bot){
+        redirect controller: "telegramSpec", action: "show", params: [id:bot.getTelegramSpec().getId()]
+    }
+
+    /* MANAGE FILE UPLOAD TO TENSORFLOW SERVER */
     def uploadTrainingData(Bot bot){
         respond bot
     }

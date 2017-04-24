@@ -18,7 +18,10 @@ class TelegramSpecController {
     }
 
     def create() {
-        respond new TelegramSpec(params)
+        def telegramSpec = new TelegramSpec(params)
+        def bot = Bot.get(params.long('botId'))
+        telegramSpec.setBot(bot)
+        respond telegramSpec
     }
 
     @Transactional
@@ -37,13 +40,8 @@ class TelegramSpecController {
 
         telegramSpec.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'telegramSpec.label', default: 'TelegramSpec'), telegramSpec.id])
-                redirect telegramSpec
-            }
-            '*' { respond telegramSpec, [status: CREATED] }
-        }
+        redirect controller:'bot', action:'show', params:[id:telegramSpec.bot.id]
+
     }
 
     def edit(TelegramSpec telegramSpec) {

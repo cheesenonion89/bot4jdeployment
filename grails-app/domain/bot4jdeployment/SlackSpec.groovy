@@ -1,13 +1,17 @@
 package bot4jdeployment
 
-class SlackSpec extends PlatformSpec{
+class SlackSpec {
 
-    private String platformName = 'Slack'
+    String platformName = 'Slack'
 
-    Long clientId
+    String accessToken
+    String clientId
     String clientSecret
     String userName
 
+    static belongsTo = [bot: Bot]
+
     static constraints = {
+        platformName editable: false
     }
 }

@@ -8,6 +8,9 @@ class FacebookSpecController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def botController = new BotController()
+
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond FacebookSpec.list(params), model:[facebookSpecCount: FacebookSpec.count()]
@@ -18,7 +21,10 @@ class FacebookSpecController {
     }
 
     def create() {
-        respond new FacebookSpec(params)
+        def facebookSpec = new FacebookSpec(params)
+        def bot = Bot.get(params.long('botId'))
+        facebookSpec.setBot(bot)
+        respond facebookSpec
     }
 
     @Transactional
@@ -37,13 +43,7 @@ class FacebookSpecController {
 
         facebookSpec.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'facebookSpec.label', default: 'FacebookSpec'), facebookSpec.id])
-                redirect facebookSpec
-            }
-            '*' { respond facebookSpec, [status: CREATED] }
-        }
+        redirect controller:'bot', action:'show', params:[id:facebookSpec.bot.id]
     }
 
     def edit(FacebookSpec facebookSpec) {

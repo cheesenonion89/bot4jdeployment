@@ -18,7 +18,10 @@ class SlackSpecController {
     }
 
     def create() {
-        respond new SlackSpec(params)
+        def slackSpec = new SlackSpec(params)
+        def bot = Bot.get(params.long('botId'))
+        slackSpec.setBot(bot)
+        respond slackSpec
     }
 
     @Transactional
@@ -37,13 +40,8 @@ class SlackSpecController {
 
         slackSpec.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'slackSpec.label', default: 'SlackSpec'), slackSpec.id])
-                redirect slackSpec
-            }
-            '*' { respond slackSpec, [status: CREATED] }
-        }
+        redirect controller:'bot', action:'show', params:[id:slackSpec.bot.id]
+
     }
 
     def edit(SlackSpec slackSpec) {

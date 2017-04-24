@@ -1,12 +1,15 @@
 package bot4jdeployment
 
-class TelegramSpec extends PlatformSpec{
+class TelegramSpec {
 
-    private String platformName = 'Telegram'
+    String platformName = 'Telegram'
 
+    String accessToken
     String webhookUrl
 
-    static constraints = {
+    static belongsTo = [bot: Bot]
 
+    static constraints = {
+        platformName editable: false
     }
 }

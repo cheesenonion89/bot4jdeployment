@@ -23,18 +23,38 @@
         <tr>
             <th>Name</th>
             <th>Deployment Destination</th>
+            <th>Facebook Specs</th>
+            <th>Slack Specs</th>
+            <th>Telegram Specs</th>
         </tr>
         </thead>
         <tbody>
         <g:each in="${botList}">
             <tr>
                 <td>
-                    <g:link class="show" action="show" resource="${it}">
-                        ${it.name}
-                    </g:link>
-                </td>
-                <td>${it.deploymentDestination}</td>
-            </tr>
+            <g:link class="show" action="show" resource="${it}">
+                ${it.name}
+            </g:link>
+            </td>
+            <td>${it.deploymentDestination}</td>
+            <g:if test="${it.facebookSpec}">
+                <td>${it.facebookSpec}</td>
+            </g:if>
+            <g:else>
+                <td>None</td>
+            </g:else>
+            <g:if test="${it.slackSpec}">
+                <td>${it.slackSpec}</td>
+            </g:if>
+            <g:else>
+                <td>None</td>
+            </g:else>
+            <g:if test="${it.telegramSpec}">
+                <td>${it.telegramSpec}</td>
+            </g:if>
+            <g:else>
+                <td>None</td>
+            </g:else>
         </g:each>
         </tbody>
     </table>

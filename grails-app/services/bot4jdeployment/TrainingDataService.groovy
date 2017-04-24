@@ -12,7 +12,7 @@ import retrofit2.Response
 class TrainingDataService {
 
 
-    private final fileApi = ApiServiceGenerator.createService(FileApi.class)
+    private final fileApi = FileApiGenerator.createService(FileApi.class)
 
 
     Bot postTrainingData(TrainingDataCommand cmd) {
