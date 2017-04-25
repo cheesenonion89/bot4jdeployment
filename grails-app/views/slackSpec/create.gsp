@@ -43,12 +43,37 @@
         </div>
 
         <div class="form-group row">
+            <label for="userName" class="col-sm-3 col-form-label">Username</label>
+
+            <div class="col-sm-9">
+                <input name="userName" class="form-control" type="text" id="userName">
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label for="accessToken" class="col-sm-3 col-form-label">Access Token</label>
 
             <div class="col-sm-9">
                 <input name="accessToken" class="form-control" type="text" id="accessToken">
             </div>
         </div>
+
+        <div class="form-group row">
+            <label for="clientId" class="col-sm-3 col-form-label">Client ID</label>
+
+            <div class="col-sm-9">
+                <input name="clientId" class="form-control" type="text" id="clientId">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="clientSecret" class="col-sm-3 col-form-label">Client Secret</label>
+
+            <div class="col-sm-9">
+                <input name="clientSecret" class="form-control" type="text" id="clientSecret">
+            </div>
+        </div>
+
         <fieldset class="buttons">
             <g:submitButton name="create" class="save btn"
                             value="${message(code: 'default.button.create.label', default: 'Create')}"/>

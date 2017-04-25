@@ -49,6 +49,15 @@
                 <input name="accessToken" class="form-control" type="text" id="accessToken">
             </div>
         </div>
+
+        <div class="form-group row">
+            <label for="webhookUrl" class="col-sm-3 col-form-label">Webhook URL</label>
+
+            <div class="col-sm-9">
+                <input name="webhookUrl" class="form-control" type="text" id="webhookUrl">
+            </div>
+        </div>
+
         <fieldset class="buttons">
             <g:submitButton name="create" class="save btn"
                             value="${message(code: 'default.button.create.label', default: 'Create')}"/>
