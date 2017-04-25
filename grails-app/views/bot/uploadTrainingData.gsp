@@ -13,10 +13,12 @@
         <div class="message alert alert-info" role="status">${flash.message}</div>
     </g:if>
     <g:hasErrors bean="${this.bot}">
-        <ul class="errors" role="alert">
+        <ul class="errors list-group" role="alert">
             <g:eachError bean="${this.bot}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                        error="${error}"/></li>
+                <li class="list-group-item list-group-item-warning"
+                    <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
+                    <g:message error="${error}"/>
+                </li>
             </g:eachError>
         </ul>
     </g:hasErrors>
@@ -47,8 +49,11 @@
         <g:hiddenField name="version" value="${this.bot.version}"/>
 
         <label class="btn btn-info" for="my-file-selector">
-            <input id="my-file-selector" name="trainingDataFile" class="trainingDataFile" type="file" style="display:none;"
-                   onchange="$('#upload-file-info').html($(this).val().replace('C:\\fakepath', '...'));">
+            <input id="my-file-selector" name="trainingDataFile" class="trainingDataFile" type="file"
+                   style="display:none;"
+                   onchange="
+                       $('#upload-file-info').html($(this).val().replace('C:\\fakepath', '...'));
+                       $('#uploadButton').attr('type', 'submit');">
             Browse
         </label>
         <span class='label label-info' id="upload-file-info"></span>
@@ -56,8 +61,9 @@
         <div class="row"><br/></div>
 
         <fieldset>
-            <input class="sendTrainingData" type="submit" value="Upload Training Data"/>
+            <input id="uploadButton" class="sendTrainingData btn btn-info" type="hidden" value="Upload Training Data"/>
         </fieldset>
+
     </g:uploadForm>
 </div>
 </body>

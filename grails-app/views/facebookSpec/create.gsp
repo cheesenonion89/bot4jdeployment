@@ -9,9 +9,9 @@
 <body>
 <div id="create-facebookSpec" class="content scaffold-create" role="main">
     <h1>Add a new Facebook Configuration for
-        <g:link controller="bot" action="show" id="${this.facebookSpec.bot.id}">
-            ${this.facebookSpec.bot.name}
-        </g:link>
+    <g:link controller="bot" action="show" id="${this.facebookSpec.bot.id}">
+        ${this.facebookSpec.bot.name}
+    </g:link>
     </h1>
 
     <g:if test="${flash.message}">
@@ -19,10 +19,12 @@
     </g:if>
 
     <g:hasErrors bean="${this.facebookSpec}">
-        <ul class="errors" role="alert">
+        <ul class="errors list-group" role="alert">
             <g:eachError bean="${this.facebookSpec}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                        error="${error}"/></li>
+                <li class="list-group-item list-group-item-warning"
+                    <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
+                    <g:message error="${error}"/>
+                </li>
             </g:eachError>
         </ul>
     </g:hasErrors>

@@ -19,10 +19,12 @@
     </g:if>
 
     <g:hasErrors bean="${this.facebookSpec}">
-        <ul class="errors" role="alert">
+        <ul class="errors list-group" role="alert">
             <g:eachError bean="${this.facebookSpec}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                        error="${error}"/></li>
+                <li class="list-group-item list-group-item-warning"
+                    <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
+                    <g:message error="${error}"/>
+                </li>
             </g:eachError>
         </ul>
     </g:hasErrors>

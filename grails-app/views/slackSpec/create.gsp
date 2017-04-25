@@ -18,11 +18,13 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
 
-    <g:hasErrors bean="${this.slackSpec}">
-        <ul class="errors" role="alert">
-            <g:eachError bean="${this.slackSpec}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                        error="${error}"/></li>
+    <g:hasErrors bean="${this.facebookSpec}">
+        <ul class="errors list-group" role="alert">
+            <g:eachError bean="${this.facebookSpec}" var="error">
+                <li class="list-group-item list-group-item-warning"
+                    <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
+                    <g:message error="${error}"/>
+                </li>
             </g:eachError>
         </ul>
     </g:hasErrors>

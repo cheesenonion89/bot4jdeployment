@@ -13,6 +13,19 @@
         <div class="message alert alert-info" role="status">${flash.message}</div>
     </g:if>
 <!--<f:display bean="bot"/>-->
+
+    <div class="row">
+        <div class="col-sm-3">
+            <b>Bot ID:</b>
+        </div>
+
+        <div class="col-sm-9">
+            ${this.bot.id}
+        </div>
+    </div>
+
+    <div class="row"><br/></div>
+
     <div class="row">
         <div class="col-sm-3">
             <b>Name:</b>

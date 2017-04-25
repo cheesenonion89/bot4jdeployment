@@ -13,10 +13,12 @@
         <div class="message alert alert-info" role="status">${flash.message}</div>
     </g:if>
     <g:hasErrors bean="${this.bot}">
-        <ul class="errors" role="alert">
+        <ul class="errors list-group" role="alert">
             <g:eachError bean="${this.bot}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                        error="${error}"/></li>
+                <li class="list-group-item list-group-item-warning"
+                    <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
+                    <g:message error="${error}"/>
+                </li>
             </g:eachError>
         </ul>
     </g:hasErrors>
@@ -24,11 +26,20 @@
 
     <g:form resource="${this.bot}" method="PUT">
         <g:hiddenField name="version" value="${this.bot?.version}"/>
+
+        <div class="form-group row">
+            <label for="id" class="col-sm-3 col-form-label">Bot ID</label>
+
+            <div class="col-sm-9">
+                <input name="id" class="form-control" type="text" id="id" value="${this.bot.id}" readonly>
+            </div>
+        </div>
+
         <div class="form-group row">
             <label for="name" class="col-sm-3 col-form-label">Name</label>
 
             <div class="col-sm-9">
-                <input name="name" class="form-control" type="text" id="name" value="${this.bot.name}">
+                <input name="name" class="form-control" type="text" id="name" value="${this.bot.name}" required>
             </div>
         </div>
 
@@ -37,7 +48,7 @@
 
             <div class="col-sm-9">
                 <input name="deploymentDestination" class="form-control" type="text" id="deploymentDestination"
-                       value="${this.bot.deploymentDestination}">
+                       value="${this.bot.deploymentDestination}" required>
             </div>
         </div>
 
