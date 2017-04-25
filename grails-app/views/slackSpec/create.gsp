@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'slackSpec.label', default: 'SlackSpec')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <a href="#create-slackSpec" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            </ul>
+<head>
+    <meta name="layout" content="bot4jdeployment"/>
+    <g:set var="entityName" value="${message(code: 'slackSpec.label', default: 'SlackSpec')}"/>
+    <title><g:message code="default.create.label" args="[entityName]"/></title>
+</head>
+
+<body>
+<div id="create-slackSpec" class="content scaffold-create" role="main">
+    <h1>Add a new Slack Configuration</h1>
+
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+
+    <g:hasErrors bean="${this.slackSpec}">
+        <ul class="errors" role="alert">
+            <g:eachError bean="${this.slackSpec}" var="error">
+                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+                        error="${error}"/></li>
+            </g:eachError>
+        </ul>
+    </g:hasErrors>
+
+    <g:form action="save">
+        <div class="form-group row">
+            <label for="platformName" class="col-sm-3 col-form-label">Platform</label>
+
+            <div class="col-sm-9">
+                <input name="platformName" class="form-control" type="text" id="platformName"
+                       value="${this.slackSpec.platformName}" readonly>
+            </div>
         </div>
-        <div id="create-slackSpec" class="content scaffold-create" role="main">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <g:hasErrors bean="${this.slackSpec}">
-            <ul class="errors" role="alert">
-                <g:eachError bean="${this.slackSpec}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                </g:eachError>
-            </ul>
-            </g:hasErrors>
-            <g:form action="save">
-                <fieldset class="form">
-                    <f:all bean="slackSpec"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-                </fieldset>
-            </g:form>
+
+        <div class="form-group row">
+            <label for="bot.id" class="col-sm-3 col-form-label">Bot</label>
+
+            <div class="col-sm-9">
+                <input name="bot" class="form-control" type="text" id="bot.id" value="${this.slackSpec.bot.id}"
+                       readonly>
+            </div>
         </div>
-    </body>
+
+        <div class="form-group row">
+            <label for="accessToken" class="col-sm-3 col-form-label">Access Token</label>
+
+            <div class="col-sm-9">
+                <input name="accessToken" class="form-control" type="text" id="accessToken">
+            </div>
+        </div>
+        <fieldset class="buttons">
+            <g:submitButton name="create" class="save btn"
+                            value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+        </fieldset>
+    </g:form>
+</div>
+</body>
 </html>
