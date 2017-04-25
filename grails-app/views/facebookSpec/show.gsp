@@ -8,7 +8,11 @@
     <body>
 
         <div id="show-facebookSpec" class="content scaffold-show" role="main">
-            <h1>Facebook Configuration for ${this.facebookSpec.bot.name}</h1>
+            <h1>Facebook Configuration for
+                <g:link controller="bot" action="show" id="${this.facebookSpec.bot.id}">
+                    ${this.facebookSpec.bot.name}
+                </g:link>
+            </h1>
 
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>

@@ -8,7 +8,11 @@
 
 <body>
 <div id="create-slackSpec" class="content scaffold-create" role="main">
-    <h1>Add a new Slack Configuration</h1>
+    <h1>Add a new Slack Configuration for
+        <g:link controller="bot" action="show" id="${this.slackSpec.bot.id}">
+            ${this.slackSpec.bot.name}
+        </g:link>
+    </h1>
 
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

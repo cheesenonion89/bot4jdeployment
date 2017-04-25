@@ -86,13 +86,7 @@ class FacebookSpecController {
 
         facebookSpec.delete flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'facebookSpec.label', default: 'FacebookSpecPayload'), facebookSpec.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        redirect controller:'bot', action:'show', params:[id:facebookSpec.bot.id]
     }
 
     protected void notFound() {

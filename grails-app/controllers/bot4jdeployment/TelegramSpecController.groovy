@@ -64,13 +64,8 @@ class TelegramSpecController {
 
         telegramSpec.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'telegramSpecPayload.label', default: 'TelegramSpecPayload'), telegramSpec.id])
-                redirect telegramSpec
-            }
-            '*'{ respond telegramSpec, [status: OK] }
-        }
+        redirect controller:'bot', action:'show', params:[id:telegramSpec.bot.id]
+
     }
 
     @Transactional
@@ -84,13 +79,8 @@ class TelegramSpecController {
 
         telegramSpec.delete flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'telegramSpecPayload.label', default: 'TelegramSpecPayload'), telegramSpec.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        redirect controller:'bot', action:'show', params:[id:telegramSpec.bot.id]
+
     }
 
     protected void notFound() {

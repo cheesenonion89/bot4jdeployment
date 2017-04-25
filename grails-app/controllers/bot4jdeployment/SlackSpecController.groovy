@@ -84,13 +84,8 @@ class SlackSpecController {
 
         slackSpec.delete flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'slackSpecPayload.label', default: 'SlackSpecPayload'), slackSpec.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        redirect controller:'bot', action:'show', params:[id:slackSpec.bot.id]
+
     }
 
     protected void notFound() {

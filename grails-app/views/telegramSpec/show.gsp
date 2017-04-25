@@ -8,7 +8,11 @@
 <body>
 
 <div id="show-telegramSpec" class="content scaffold-show" role="main">
-    <h1>Telegram Configuration for ${this.telegramSpec.bot.name}</h1>
+    <h1>Telegram Configuration for
+        <g:link controller="bot" action="show" id="${this.telegramSpec.bot.id}">
+            ${this.telegramSpec.bot.name}
+        </g:link>
+    </h1>
 
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

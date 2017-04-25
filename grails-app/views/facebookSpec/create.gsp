@@ -8,7 +8,11 @@
 
 <body>
 <div id="create-facebookSpec" class="content scaffold-create" role="main">
-    <h1>Add a new Facebook Configuration</h1>
+    <h1>Add a new Facebook Configuration for
+        <g:link controller="bot" action="show" id="${this.facebookSpec.bot.id}">
+            ${this.facebookSpec.bot.name}
+        </g:link>
+    </h1>
 
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
@@ -38,7 +42,7 @@
 
             <div class="col-sm-9">
                 <input name="bot" class="form-control" type="text" id="bot.id" value="${this.facebookSpec.bot.id}"
-                     readonly>
+                       readonly>
             </div>
         </div>
 
