@@ -42,6 +42,15 @@
                 <input name="deploymentDestination" class="form-control" type="text" id="deploymentDestination" required>
             </div>
         </div>
+
+        <div class="form-group row">
+            <label for="botType" class="col-sm-3 col-form-label">Bot Type</label>
+
+            <div class="col-sm-9">
+                <input name="botType" class="form-control" type="text" id="botType" required>
+            </div>
+        </div>
+
         <fieldset class="buttons">
             <g:submitButton name="create" class="save btn"
                             value="${message(code: 'default.button.create.label', default: 'Create')}"/>

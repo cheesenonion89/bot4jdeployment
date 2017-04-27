@@ -53,6 +53,15 @@
         </div>
 
         <div class="form-group row">
+            <label for="botType" class="col-sm-3 col-form-label">Bot Type</label>
+
+            <div class="col-sm-9">
+                <input name="botType" class="form-control" type="text" id="botType"
+                       value="${this.bot.botType}" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label for="facebookSpec" class="col-sm-3 col-form-label">Facebook Configuration</label>
 
             <div id="facebookSpec" class="col-sm-9">

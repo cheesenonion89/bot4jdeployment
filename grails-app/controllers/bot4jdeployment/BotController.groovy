@@ -77,25 +77,33 @@ class BotController {
     @Transactional
     def save(Bot bot) {
         if (bot == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
         if (bot.hasErrors()) {
-            transactionStatus.setRollbackOnly()
             respond bot.errors, view:'create'
             return
         }
 
         bot.save flush:true
 
+        if (bot == null) {
+            notFound()
+            return
+        }
+
+        if (bot.hasErrors()) {
+            respond bot.errors, view:'create'
+            return
+        }
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), bot.id])
                 redirect bot
             }
-            '*' { respond bot, [status: CREATED] }
+            '*' { respond bot, [status: OK] }
         }
     }
 

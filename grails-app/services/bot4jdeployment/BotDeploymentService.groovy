@@ -43,6 +43,7 @@ class BotDeploymentService {
                 bot.id,
                 bot.name,
                 bot.deploymentDestination,
+                bot.botType,
                 facebookSpecPayload,
                 slackSpecPayload,
                 telegramSpecPayload

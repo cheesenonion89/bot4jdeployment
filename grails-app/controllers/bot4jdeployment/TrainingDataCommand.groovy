@@ -11,5 +11,17 @@ class TrainingDataCommand implements Validateable{
     Long id
     Integer version
 
+    static constraints = {
+        trainingDataFile validator: { val, obj ->
+            if(val == null || val.empty){
+                return false
+            }
+
+            ['zip', 'rar', '7z', 'tar', 'gz'].any { extension ->
+                val.originalFilename?.toLowerCase()?.endsWith(extension)
+            }
+        }
+    }
+
 
 }

@@ -23,6 +23,7 @@
         <tr>
             <th>Name</th>
             <th>Deployment Destination</th>
+            <th>Bot Type</th>
             <th>Facebook Specs</th>
             <th>Slack Specs</th>
             <th>Telegram Specs</th>
@@ -37,6 +38,7 @@
             </g:link>
             </td>
             <td>${it.deploymentDestination}</td>
+            <td>${it.botType}</td>
             <g:if test="${it.facebookSpec}">
                 <td><span class="glyphicon glyphicon-ok" style="color:green;" aria-hidden="true"></span></td>
             </g:if>

@@ -40,6 +40,14 @@
         <div class="col-sm-9">
             ${this.bot.deploymentDestination}
         </div>
+
+        <div class="col-sm-3">
+            <b>Bot Type:</b>
+        </div>
+
+        <div class="col-sm-9">
+            ${this.bot.botType}
+        </div>
     </div>
 
     <div class="row"><br/></div>

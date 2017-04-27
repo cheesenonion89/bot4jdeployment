@@ -11,7 +11,7 @@ class FileApiGenerator {
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl(FILE_API_URL)
+                    .baseUrl(LOCAL_NETWORK_URL)
                     .addConverterFactory(GsonConverterFactory.create());
 
     private static Retrofit retrofit = builder.build();

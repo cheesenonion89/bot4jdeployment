@@ -38,9 +38,9 @@ class TrainingDataService {
 
         String stringId = cmd.id.toString()
 
-        RequestBody id = RequestBody.create(MultipartBody.FORM, stringId)
+        // RequestBody id = RequestBody.create(MultipartBody.FORM, stringId)
 
-        Call<String> call = fileApi.putTrainingData(id, body)
+        Call<String> call = fileApi.putTrainingData(stringId, body)
         Response<String> response = call.execute()
 
         println(response.body())

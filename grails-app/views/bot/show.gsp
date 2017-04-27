@@ -51,6 +51,18 @@
     <div class="row"><br/></div>
 
     <div class="row">
+        <div class="col-sm-3">
+            <b>Bot Type:</b>
+        </div>
+
+        <div class="col-sm-9">
+            ${this.bot.botType}
+        </div>
+    </div>
+
+    <div class="row"><br/></div>
+
+    <div class="row">
 
         <div class="col-sm-3">
             <b>Facebook Configuration:</b>

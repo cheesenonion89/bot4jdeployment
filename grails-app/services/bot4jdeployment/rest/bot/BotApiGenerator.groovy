@@ -1,5 +1,6 @@
 package bot4jdeployment.rest.bot
 
+import com.google.gson.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -11,11 +12,15 @@ class BotApiGenerator {
 
     private final static String BOT_API_URL = "";
     private final static String LOCAL_NETWORK_URL = "http://192.168.0.2:5000/";
+    private final static String NGROK_URL ="http://095704bb.ngrok.io ";
+    private final static String LOCALHOST_URL ="localhost:4567"
+
+    static Gson gson = new GsonBuilder().setLenient().create()
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl(LOCAL_NETWORK_URL)
-                    .addConverterFactory(GsonConverterFactory.create());
+                    .baseUrl(NGROK_URL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
 
     private static Retrofit retrofit = builder.build();
 

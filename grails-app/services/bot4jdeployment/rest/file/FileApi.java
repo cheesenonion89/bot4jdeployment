@@ -1,6 +1,5 @@
 package bot4jdeployment.rest.file;
 
-import bot4jdeployment.rest.file.model.TrainingDataSendPayload;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -11,15 +10,13 @@ import retrofit2.http.*;
  */
 public interface FileApi {
 
-    @POST("training_data")
-    Call<String> putTrainingDataDummy(@Body TrainingDataSendPayload trainingDataSendPayload);
 
     @Multipart
-    @POST("training_data/0")
+    @PUT("training_data/{id}")
     Call<String> putTrainingData(
-            @Part("id") RequestBody id,
+            @Path("id") String id,
             @Part MultipartBody.Part file
-            );
+    );
 
     @DELETE("training_data/{id}")
     Call<String> deleteTrainingData(@Path("id") String id);
