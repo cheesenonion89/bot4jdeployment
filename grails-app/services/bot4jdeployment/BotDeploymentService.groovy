@@ -18,6 +18,13 @@ class BotDeploymentService {
 
     private final botApi = BotApiGenerator.createService(BotApi.class)
 
+    def deleteBot(Bot bot){
+        Call<String> call = botApi.deleteBot(bot.getId())
+        Response<String> response = call.execute();
+        println(response.body())
+        return response.body()
+    }
+
     def deployBot(Bot bot) {
 
         Call<String> call = botApi.deployBot(domainToRestModel(bot))

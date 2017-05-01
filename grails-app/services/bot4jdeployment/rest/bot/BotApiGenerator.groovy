@@ -12,14 +12,14 @@ class BotApiGenerator {
 
     private final static String BOT_API_URL = "";
     private final static String LOCAL_NETWORK_URL = "http://192.168.0.2:5000/";
-    private final static String NGROK_URL ="http://095704bb.ngrok.io ";
-    private final static String LOCALHOST_URL ="localhost:4567"
+    private final static String NGROK_URL ="";
+    private final static String LOCALHOST_URL ="http://localhost:4567"
 
     static Gson gson = new GsonBuilder().setLenient().create()
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl(NGROK_URL)
+                    .baseUrl(LOCALHOST_URL)
                     .addConverterFactory(GsonConverterFactory.create(gson))
 
     private static Retrofit retrofit = builder.build();

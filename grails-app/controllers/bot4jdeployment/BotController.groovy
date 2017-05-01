@@ -147,6 +147,8 @@ class BotController {
 
         bot = trainingDataService.deleteTrainingData(bot)
 
+        String response = botDeploymentService.deleteBot(bot)
+
         bot.delete flush:true
 
         request.withFormat {
