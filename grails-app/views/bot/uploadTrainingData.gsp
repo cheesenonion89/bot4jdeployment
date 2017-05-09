@@ -32,7 +32,9 @@
         <div class="col-sm-9">
             ${this.bot.name}
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-sm-3">
             <b>Deployment Destination:</b>
         </div>
@@ -40,7 +42,9 @@
         <div class="col-sm-9">
             ${this.bot.deploymentDestination}
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-sm-3">
             <b>Bot Type:</b>
         </div>
@@ -60,7 +64,7 @@
             <input id="my-file-selector" name="trainingDataFile" class="trainingDataFile" type="file"
                    style="display:none;"
                    onchange="
-                       $('#upload-file-info').html($(this).val().replace('C:\\fakepath', '...'));
+                       $('#upload-cnn_server-info').html($(this).val().replace('C:\\fakepath', '...'));
                        $('#uploadButton').attr('type', 'submit');">
             Browse
         </label>

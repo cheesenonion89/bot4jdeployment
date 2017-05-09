@@ -11,6 +11,7 @@ class BotController {
                              sendTrainingData: "POST",
                              delete: "DELETE"]
 
+    def transferLearningService
     def trainingDataService
     def botDeploymentService
 
@@ -18,6 +19,12 @@ class BotController {
 
     def deployBot(Bot bot){
         botDeploymentService.deployBot(bot)
+        redirect bot
+    }
+
+    /* MANAGE BOT TRAINING */
+    def startTransferLearning(Bot bot){
+        transferLearningService.startTransferLearning(bot)
         redirect bot
     }
 

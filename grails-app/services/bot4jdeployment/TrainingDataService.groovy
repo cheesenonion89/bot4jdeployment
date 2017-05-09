@@ -1,6 +1,7 @@
 package bot4jdeployment
 
-import bot4jdeployment.rest.file.FileApi
+import bot4jdeployment.rest.cnn_server.CNNServerApi
+import bot4jdeployment.rest.cnn_server.CNNServerApiGenerator
 import grails.transaction.Transactional
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -13,7 +14,7 @@ import retrofit2.Response
 class TrainingDataService {
 
 
-    private final fileApi = bot4jdeployment.rest.file.FileApiGenerator.createService(FileApi.class)
+    private final fileApi = CNNServerApiGenerator.createService(CNNServerApi.class)
 
 
     Bot postTrainingData(TrainingDataCommand cmd) {
@@ -34,7 +35,7 @@ class TrainingDataService {
         )
 
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("file", cmd.trainingDataFile.getOriginalFilename(), requestBody)
+                MultipartBody.Part.createFormData("cnn_server", cmd.trainingDataFile.getOriginalFilename(), requestBody)
 
         String stringId = cmd.id.toString()
 

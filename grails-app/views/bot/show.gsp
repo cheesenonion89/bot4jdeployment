@@ -145,6 +145,20 @@
 
             <g:form resource="${this.bot}">
                 <fieldset class="buttons">
+                    <g:link class="startTransferLearning btn btn-info" action="startTransferLearning"
+                            resource="${this.bot}">Start Transfer Learning</g:link>
+                </fieldset>
+            </g:form>
+        </div>
+    </div>
+
+    <div class="row"><br/></div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <g:form resource="${this.bot}">
+                <fieldset class="buttons">
                     <g:link class="deployBot btn btn-info" action="deployBot"
                             resource="${this.bot}">Deploy Bot</g:link>
                 </fieldset>
