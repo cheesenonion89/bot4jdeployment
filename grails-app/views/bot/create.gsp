@@ -34,7 +34,7 @@
                 <input name="name" class="form-control" type="text" id="name" required>
             </div>
         </div>
-
+        <%--
         <div class="form-group row">
             <label for="deploymentDestination" class="col-sm-3 col-form-label">Deployment Destination</label>
 
@@ -42,6 +42,7 @@
                 <input name="deploymentDestination" class="form-control" type="text" id="deploymentDestination" required>
             </div>
         </div>
+        --%>
 
         <div class="form-group row">
             <label for="botType" class="col-sm-3 col-form-label">Bot Type</label>

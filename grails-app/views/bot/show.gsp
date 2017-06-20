@@ -36,6 +36,7 @@
         </div>
     </div>
 
+    <%--
     <div class="row"><br/></div>
 
     <div class="row">
@@ -47,7 +48,7 @@
             ${this.bot.deploymentDestination}
         </div>
     </div>
-
+    --%>
     <div class="row"><br/></div>
 
     <div class="row">

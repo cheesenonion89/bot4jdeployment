@@ -3,7 +3,6 @@ package bot4jdeployment
 class Bot {
 
     String name
-    String deploymentDestination
     String botType
 
     FacebookSpec facebookSpec
