@@ -33,7 +33,7 @@
             ${this.bot.name}
         </div>
     </div>
-
+    <%--
     <div class="row">
         <div class="col-sm-3">
             <b>Deployment Destination:</b>
@@ -43,7 +43,7 @@
             ${this.bot.deploymentDestination}
         </div>
     </div>
-
+    --%>
     <div class="row">
         <div class="col-sm-3">
             <b>Bot Type:</b>
