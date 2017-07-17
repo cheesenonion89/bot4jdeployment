@@ -35,7 +35,7 @@ class TrainingDataService {
         )
 
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("cnn_server", cmd.trainingDataFile.getOriginalFilename(), requestBody)
+                MultipartBody.Part.createFormData("file", cmd.trainingDataFile.getOriginalFilename(), requestBody)
 
         String stringId = cmd.id.toString()
 

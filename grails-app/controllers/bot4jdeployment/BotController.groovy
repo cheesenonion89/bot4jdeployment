@@ -1,15 +1,16 @@
 package bot4jdeployment
 
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+
+import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
 class BotController {
 
-    static allowedMethods = [save: "POST",
-                             update: "PUT",
+    static allowedMethods = [save            : "POST",
+                             update          : "PUT",
                              sendTrainingData: "POST",
-                             delete: "DELETE"]
+                             delete          : "DELETE"]
 
     def transferLearningService
     def trainingDataService
@@ -17,60 +18,62 @@ class BotController {
 
     /* MANAGE BOT DEPLOYMENT */
 
-    def deployBot(Bot bot){
+    def deployBot(Bot bot) {
         botDeploymentService.deployBot(bot)
         redirect bot
     }
 
     /* MANAGE BOT TRAINING */
-    def startTransferLearning(Bot bot){
+
+    def startTransferLearning(Bot bot) {
         transferLearningService.startTransferLearning(bot)
         redirect bot
     }
 
     /* MANAGE PLATFORM CONFIGURATIONS */
-    def addFacebookSpec(Bot bot){
-        redirect controller: "facebookSpec", action: "create", params: [botId:bot.getId()]
+
+    def addFacebookSpec(Bot bot) {
+        redirect controller: "facebookSpec", action: "create", params: [botId: bot.getId()]
     }
 
-    def showFacebookSpec(Bot bot){
-        redirect controller: "facebookSpec", action: "show", params: [id:bot.getFacebookSpec().getId()]
+    def showFacebookSpec(Bot bot) {
+        redirect controller: "facebookSpec", action: "show", params: [id: bot.getFacebookSpec().getId()]
     }
 
-    def addSlackSpec(Bot bot){
-        redirect controller: "slackSpec", action: "create", params: [botId:bot.getId()]
+    def addSlackSpec(Bot bot) {
+        redirect controller: "slackSpec", action: "create", params: [botId: bot.getId()]
     }
 
-    def showSlackSpec(Bot bot){
-        redirect controller: "slackSpec", action: "show", params: [id:bot.getSlackSpec().getId()]
+    def showSlackSpec(Bot bot) {
+        redirect controller: "slackSpec", action: "show", params: [id: bot.getSlackSpec().getId()]
     }
 
-    def addTelegramSpec(Bot bot){
-        redirect controller: "telegramSpec", action: "create", params: [botId:bot.getId()]
+    def addTelegramSpec(Bot bot) {
+        redirect controller: "telegramSpec", action: "create", params: [botId: bot.getId()]
     }
 
-    def showTelegramSpec(Bot bot){
-        redirect controller: "telegramSpec", action: "show", params: [id:bot.getTelegramSpec().getId()]
+    def showTelegramSpec(Bot bot) {
+        redirect controller: "telegramSpec", action: "show", params: [id: bot.getTelegramSpec().getId()]
     }
 
     /* MANAGE FILE UPLOAD TO TENSORFLOW SERVER */
-    def uploadTrainingData(Bot bot){
+
+    def uploadTrainingData(Bot bot) {
         respond bot
     }
 
 
-
-    def sendTrainingData(TrainingDataCommand cmd){
+    def sendTrainingData(TrainingDataCommand cmd) {
         println("SENDING TRAINING DATA")
         def bot = trainingDataService.postTrainingData(cmd)
         redirect bot
     }
 
-
     /* BASIC CRUD OPERATIONS */
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Bot.list(params), model:[botCount: Bot.count()]
+        respond Bot.list(params), model: [botCount: Bot.count()]
     }
 
     def show(Bot bot) {
@@ -89,11 +92,11 @@ class BotController {
         }
 
         if (bot.hasErrors()) {
-            respond bot.errors, view:'create'
+            respond bot.errors, view: 'create'
             return
         }
 
-        bot.save flush:true
+        bot.save flush: true
 
         if (bot == null) {
             notFound()
@@ -101,13 +104,13 @@ class BotController {
         }
 
         if (bot.hasErrors()) {
-            respond bot.errors, view:'create'
+            respond bot.errors, view: 'create'
             return
         }
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), bot.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'bot.label', default: 'Bot with ID'), bot.id])
                 redirect bot
             }
             '*' { respond bot, [status: OK] }
@@ -128,18 +131,18 @@ class BotController {
 
         if (bot.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond bot.errors, view:'edit'
+            respond bot.errors, view: 'edit'
             return
         }
 
-        bot.save flush:true
+        bot.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), bot.id])
                 redirect bot
             }
-            '*'{ respond bot, [status: OK] }
+            '*' { respond bot, [status: OK] }
         }
     }
 
@@ -156,14 +159,14 @@ class BotController {
 
         String response = botDeploymentService.deleteBot(bot)
 
-        bot.delete flush:true
+        bot.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), bot.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -173,7 +176,7 @@ class BotController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'bot.label', default: 'BotSendPayload'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

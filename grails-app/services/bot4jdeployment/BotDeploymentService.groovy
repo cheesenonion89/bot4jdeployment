@@ -9,16 +9,13 @@ import bot4jdeployment.rest.bot.model.TelegramSpecPayload
 import grails.transaction.Transactional
 import retrofit2.Call
 import retrofit2.Response
-import groovy.json.JsonBuilder
-
-
 
 @Transactional
 class BotDeploymentService {
 
     private final botApi = BotApiGenerator.createService(BotApi.class)
 
-    def deleteBot(Bot bot){
+    def deleteBot(Bot bot) {
         Call<String> call = botApi.deleteBot(bot.getId())
         Response<String> response = call.execute();
         println(response.body())
@@ -32,24 +29,37 @@ class BotDeploymentService {
         println(response.body())
     }
 
-    def domainToRestModel(Bot bot){
-        FacebookSpecPayload facebookSpecPayload = new FacebookSpecPayload(
-                bot.facebookSpec.accessToken
-        )
-        SlackSpecPayload slackSpecPayload = new SlackSpecPayload(
-                bot.slackSpec.accessToken,
-                bot.slackSpec.clientId,
-                bot.slackSpec.clientSecret,
-                bot.slackSpec.userName
-        )
-        TelegramSpecPayload telegramSpecPayload = new TelegramSpecPayload(
-                bot.telegramSpec.accessToken,
-                bot.telegramSpec.webhookUrl
-        )
+    def domainToRestModel(Bot bot) {
+
+        FacebookSpecPayload facebookSpecPayload = null
+        SlackSpecPayload slackSpecPayload = null
+        TelegramSpecPayload telegramSpecPayload = null
+
+        if (bot.facebookSpec) {
+            facebookSpecPayload = new FacebookSpecPayload(
+                    bot.facebookSpec.accessToken
+            )
+        }
+
+        if (bot.slackSpec) {
+            slackSpecPayload = new SlackSpecPayload(
+                    bot.slackSpec.accessToken,
+                    bot.slackSpec.clientId,
+                    bot.slackSpec.clientSecret,
+                    bot.slackSpec.userName
+            )
+        }
+
+        if (bot.telegramSpec) {
+            telegramSpecPayload = new TelegramSpecPayload(
+                    bot.telegramSpec.accessToken,
+                    bot.telegramSpec.webhookUrl
+            )
+        }
+
         BotSendPayload botSendPayload = new BotSendPayload(
                 bot.id,
                 bot.name,
-                bot.deploymentDestination,
                 bot.botType,
                 facebookSpecPayload,
                 slackSpecPayload,
