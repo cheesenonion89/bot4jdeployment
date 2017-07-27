@@ -5,14 +5,12 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-/**
- * Created by Markus on 24.04.2017.
+/*
+ * Provides the BotApi
  */
 class BotApiGenerator {
 
-    private final static String BOT_API_URL = "";
     private final static String LOCAL_NETWORK_URL = "http://192.168.0.2:5000/";
-    private final static String NGROK_URL ="";
     private final static String LOCALHOST_URL ="http://localhost:4567"
 
     static Gson gson = new GsonBuilder().setLenient().create()

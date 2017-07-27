@@ -4,8 +4,8 @@ import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
-/**
- * Created by Markus on 20.04.2017.
+/*
+ * HTTP endpoints to communicate with the CNN Server to create / delete a new bot and trigger the transfer learning
  */
 public interface CNNServerApi {
 

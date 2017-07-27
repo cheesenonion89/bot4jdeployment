@@ -2,6 +2,9 @@ package bot4jdeployment
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+/*
+ * Standard Controller for basic maanagement of Facebook Configurations
+ */
 
 @Transactional(readOnly = true)
 class FacebookSpecController {

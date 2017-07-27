@@ -7,8 +7,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-/**
- * Created by Markus on 09.05.2017.
+/*
+ * Exposes the functionality to trigger transfer learning to the controllers
  */
 @Transactional
 class TransferLearningService {
@@ -17,7 +17,6 @@ class TransferLearningService {
 
     def startTransferLearning(Bot bot) {
         Call<String> call = cnnServerApi.putTransferLearning(bot.id.toString())
-        // TODO: Make sure a response is retrieved after transfer learning. At the same time restrict Transfer Learning Time on CNN Server
         call.enqueue(new Callback<String>() {
             @Override
             void onResponse(Call<String> cl, Response<String> rspns) {

@@ -58,11 +58,12 @@ class BotController {
 
     /* MANAGE FILE UPLOAD TO TENSORFLOW SERVER */
 
+    // Redirect to the upload view
     def uploadTrainingData(Bot bot) {
         respond bot
     }
 
-
+    // Send the training data
     def sendTrainingData(TrainingDataCommand cmd) {
         println("SENDING TRAINING DATA")
         def bot = trainingDataService.postTrainingData(cmd)

@@ -10,6 +10,10 @@ import grails.transaction.Transactional
 import retrofit2.Call
 import retrofit2.Response
 
+/*
+ * Exposes the functionality to add a new bot to the Bot Server to the controllers
+ */
+
 @Transactional
 class BotDeploymentService {
 

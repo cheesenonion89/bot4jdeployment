@@ -1,7 +1,7 @@
 package bot4jdeployment.rest.bot.model;
 
-/**
- * Created by Markus on 24.04.2017.
+/*
+ * Domain class to hold information about the Facebook configuration of a bot. Is always sent together with a bot.
  */
 public class FacebookSpecPayload {
 

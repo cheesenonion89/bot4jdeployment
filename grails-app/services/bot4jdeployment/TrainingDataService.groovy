@@ -10,6 +10,9 @@ import org.springframework.web.multipart.MultipartFile
 import retrofit2.Call
 import retrofit2.Response
 
+/*
+ * Exposes the functionality to upload training data to the controllers
+ */
 @Transactional
 class TrainingDataService {
 

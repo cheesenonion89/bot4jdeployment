@@ -4,6 +4,9 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/*
+ * Provides the CNN Server Api
+ */
 public class CNNServerApiGenerator {
 
     private final static String FILE_API_URL = "http://188.64.248.202:42023/";

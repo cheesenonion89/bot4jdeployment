@@ -5,18 +5,12 @@ import retrofit2.Call
 import retrofit2.http.*
 
 /**
- * Created by Markus on 24.04.2017.
+ * HTTP endpoints to communicate with the Bot Server
  */
 interface BotApi {
 
-    @GET("/deploy")
-    Call<String> getBotTypes(@Path("botId") botId)
-
     @DELETE("/deploy")
     Call<String> deleteBot(@Query("bot_id") botId)
-
-    @POST("/deploy")
-    Call<String> updateBot(@Body BotSendPayload botSendPayload)
 
     @PUT("/deploy")
     Call<String> deployBot(@Body BotSendPayload botSendPayload)
