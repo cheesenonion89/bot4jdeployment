@@ -26,7 +26,7 @@ class BotDeploymentService {
 
         Call<String> call = botApi.deployBot(domainToRestModel(bot))
         Response<String> response = call.execute()
-        println(response.body())
+        println(response)
     }
 
     def domainToRestModel(Bot bot) {

@@ -128,7 +128,8 @@
 
 
     <div class="row">
-        <div class="col-sm-12">
+
+        <div class="col-sm-2">
 
             <g:form resource="${this.bot}">
                 <fieldset class="buttons">
@@ -137,12 +138,8 @@
                 </fieldset>
             </g:form>
         </div>
-    </div>
 
-    <div class="row"><br/></div>
-
-    <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-2">
 
             <g:form resource="${this.bot}">
                 <fieldset class="buttons">
@@ -151,12 +148,8 @@
                 </fieldset>
             </g:form>
         </div>
-    </div>
 
-    <div class="row"><br/></div>
-
-    <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-2">
 
             <g:form resource="${this.bot}">
                 <fieldset class="buttons">
@@ -170,6 +163,7 @@
     <div class="row"><br/></div>
 
     <div class="row">
+
         <div class="col-sm-12">
             <g:form resource="${this.bot}" method="DELETE">
                 <fieldset class="buttons">

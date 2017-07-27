@@ -12,8 +12,8 @@ interface BotApi {
     @GET("/deploy")
     Call<String> getBotTypes(@Path("botId") botId)
 
-    @DELETE("/deploy/{bot_id}")
-    Call<String> deleteBot(@Path("bot_id") botId)
+    @DELETE("/deploy")
+    Call<String> deleteBot(@Query("bot_id") botId)
 
     @POST("/deploy")
     Call<String> updateBot(@Body BotSendPayload botSendPayload)
